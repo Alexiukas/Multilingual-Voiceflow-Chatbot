@@ -1,0 +1,27 @@
+# Capturing URL
+<script>
+  var current_url = window.location.href;
+</script>
+
+# Chatbot widget code and passing current_url to chatbot
+<script type="text/javascript">
+  (function(d, t) {
+      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+      v.onload = function() {
+        window.voiceflow.chat.load({
+          verify: { projectID: 'REPLACE_WITH_YOUR_PROJECT_ID' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          launch: {
+              event: {
+                type: "launch",
+                payload: {
+                  url: current_url 
+                }
+              }
+            }
+        });
+      }
+      v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+  })(document, 'script');
+</script>
